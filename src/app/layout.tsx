@@ -1,4 +1,5 @@
 import { Providers } from "./providers";
+import { ApolloWrapper } from "./lib/apollo-wrapper";
 
 export default function RootLayout({
   children,
@@ -8,7 +9,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <ApolloWrapper>{children}</ApolloWrapper>
+        </Providers>
       </body>
     </html>
   );
