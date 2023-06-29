@@ -1,10 +1,10 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 import { gql } from "@apollo/client";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
-import { Text } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
+import CountryCard from "./components/countryCard";
+import { Country } from "./types";
 
 const query = gql`
   query Countries {
@@ -17,13 +17,18 @@ const query = gql`
   }
 `;
 
-export default function PollPage() {
+export default function Countries() {
   const { data }: any = useSuspenseQuery(query);
-  console.log(data);
 
   return (
-    <Text fontSize={32} textAlign={["center"]}>
-      The api returned data about {data.countries.length} countries
-    </Text>
+    <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+      {data.countries.map((country: Country, i: number) => {
+        return (
+          <GridItem w="100%" key={i}>
+            <CountryCard country={country} />
+          </GridItem>
+        );
+      })}
+    </Grid>
   );
 }

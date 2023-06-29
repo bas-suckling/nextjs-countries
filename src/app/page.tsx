@@ -1,8 +1,8 @@
 "use client";
 
-import PollPage from "./countries";
+import Countries from "./countries";
 import styles from "./page.module.css";
-import { Text } from "@chakra-ui/react";
+import { Heading, Box } from "@chakra-ui/react";
 
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 import { __DEV__ } from "@apollo/client/utilities/globals";
@@ -16,10 +16,14 @@ if (__DEV__) {
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Text fontSize={32} textAlign={["center"]}>
-        This is a blank next.js project deployed to vercel
-      </Text>
-      <PollPage />
+      <Box w="100%" pt={10}>
+        <Heading fontSize={32} textAlign={["center"]}>
+          Countries of the world
+        </Heading>
+      </Box>
+      <Box p={10}>
+        <Countries />
+      </Box>
     </main>
   );
 }
