@@ -22,7 +22,7 @@ export default function CountryCard(props: { country: Country }) {
       bgImage={"linear-gradient(160deg,#0093E9 0%, #80D0C7 100%);"}
     >
       <CardHeader>
-        <Heading size="md">
+        <Heading size="sm">
           {country.name} {country.emoji}
         </Heading>
       </CardHeader>
