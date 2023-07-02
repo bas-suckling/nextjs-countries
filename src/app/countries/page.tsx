@@ -1,10 +1,14 @@
 "use client";
 
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { cache, use } from "react";
+
 import { gql } from "@apollo/client";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 import { Box, Grid, GridItem, Heading, Stack } from "@chakra-ui/react";
-import CountryCard from "./components/countryCard";
-import { Country } from "./types";
+import CountryCard from "../components/countryCard";
+import { Country } from "../types";
 
 const query = gql`
   query Countries {
@@ -18,7 +22,18 @@ const query = gql`
 `;
 
 export default function Countries() {
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect("/api/auth/signin");
+    },
+  });
+
   const { data }: any = useSuspenseQuery(query);
+
+  if (status === "loading") {
+    return <p>Loading....</p>;
+  }
 
   return (
     <Stack>
