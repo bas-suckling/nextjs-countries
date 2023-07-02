@@ -1,20 +1,11 @@
 "use client";
 
-import { redirect } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { Heading, Stack } from "@chakra-ui/react";
 
-export default function Countries() {
-  useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/api/auth/signin");
-    },
-  });
-
+export default function JobTitle() {
   return (
     <Stack>
-      <Heading>Add your Job Title</Heading>
+      <Heading>Update your Job Title</Heading>
     </Stack>
   );
 }
