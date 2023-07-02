@@ -42,4 +42,27 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    session: ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          username: token.username,
+          jobtitle: token.jobtitle,
+        },
+      };
+    },
+    jwt: ({ token, user }) => {
+      if (user) {
+        const u = user as unknown as any;
+        return {
+          ...token,
+          username: u.username,
+          jobtitle: u.jobtitle,
+        };
+      }
+      return token;
+    },
+  },
 };
