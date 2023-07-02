@@ -11,6 +11,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Link,
   Stack,
 } from "@chakra-ui/react";
 import CountryCard from "../components/countryCard";
@@ -50,6 +51,7 @@ export default function Countries() {
 
   return (
     <Stack>
+      <Link href="/">Home</Link>;
       <Box w="100%" pt={10}>
         <Heading fontSize={32} textAlign={["center"]}>
           Countries of the world

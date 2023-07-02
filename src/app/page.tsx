@@ -1,8 +1,12 @@
-import { LoginButton, LogoutButton } from "./components/buttons.component";
-
-import { __DEV__ } from "@apollo/client/utilities/globals";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./lib/auth";
+import { WelcomeBanner } from "./components/welcomeBanner";
+import {
+  CountriesButton,
+  LoginButton,
+  LogoutButton,
+  ProfileButton,
+} from "./components/buttons";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -15,7 +19,17 @@ export default async function Home() {
         height: "70vh",
       }}
     >
-      <div>{session ? <LogoutButton /> : <LoginButton />}</div>
+      <div>
+        <WelcomeBanner />
+        {session ? (
+          <>
+            <LogoutButton />
+            <CountriesButton />
+          </>
+        ) : (
+          <LoginButton />
+        )}
+      </div>
     </main>
   );
 }
