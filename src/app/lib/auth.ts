@@ -48,8 +48,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          username: token.username,
-          jobtitle: token.jobtitle,
+          id: token.id,
         },
       };
     },
@@ -58,8 +57,7 @@ export const authOptions: NextAuthOptions = {
         const u = user as unknown as any;
         return {
           ...token,
-          username: u.username,
-          jobtitle: u.jobtitle,
+          id: u.id,
         };
       }
       return token;

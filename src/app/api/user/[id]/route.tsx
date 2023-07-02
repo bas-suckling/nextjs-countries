@@ -51,3 +51,29 @@ export async function PATCH(
     );
   }
 }
+
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const id = params.id;
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+
+    return NextResponse.json({
+      status: "success",
+      user: {
+        id: user?.id,
+        jobTitle: user?.jobtitle,
+        username: user?.username,
+      },
+    });
+  } catch (error: any) {
+    return new NextResponse(
+      JSON.stringify({ message: "Unknown error occured" }),
+      { status: 500 }
+    );
+  }
+}
