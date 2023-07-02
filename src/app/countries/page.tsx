@@ -11,11 +11,11 @@ import {
   Grid,
   GridItem,
   Heading,
-  Link,
   Stack,
 } from "@chakra-ui/react";
 import CountryCard from "../components/countryCard";
 import { Country } from "../types";
+import { Navbar } from "../components/navbar";
 
 const query = gql`
   query Countries {
@@ -51,7 +51,7 @@ export default function Countries() {
 
   return (
     <Stack>
-      <Link href="/">Home</Link>;
+      <Navbar isLoggedIn={!!status} />
       <Box w="100%" pt={10}>
         <Heading fontSize={32} textAlign={["center"]}>
           Countries of the world
