@@ -9,7 +9,7 @@ export const authOptions: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
-      name: "Sign in",
+      name: "email and password",
       credentials: {
         email: {
           label: "Email",
@@ -37,7 +37,6 @@ export const authOptions: NextAuthOptions = {
           id: user.id,
           email: user.email,
           name: user.name,
-          randomKey: "Hey cool",
         };
       },
     }),

@@ -9,19 +9,3 @@ export const LoginLink = () => {
 export const LogoutLink = () => {
   return <Link onClick={() => signOut()}>Sign Out</Link>;
 };
-
-export const HomeLink = () => {
-  return <Link href="/">Home</Link>;
-};
-
-export const CountriesLink = () => {
-  return <Link href="/countries">Countries</Link>;
-};
-
-export const UsernameLink = () => {
-  return <Link href="/username">Username</Link>;
-};
-
-export const JobTitleLink = () => {
-  return <Link href="/jobtitle">Job Title</Link>;
-};

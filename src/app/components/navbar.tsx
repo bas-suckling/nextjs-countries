@@ -1,14 +1,12 @@
 "use client";
 
-import { ButtonGroup } from "@chakra-ui/react";
 import {
-  CountriesLink,
-  HomeLink,
-  JobTitleLink,
-  LoginLink,
-  LogoutLink,
-  UsernameLink,
-} from "./links";
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+} from "@chakra-ui/react";
+import { LoginLink, LogoutLink } from "./links";
 
 interface NavbarProps {
   isLoggedIn: boolean;
@@ -16,18 +14,28 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
   return (
-    <ButtonGroup variant="outline" spacing="6">
+    <Box p={4}>
       {props.isLoggedIn ? (
-        <>
-          <HomeLink />
-          <UsernameLink />
-          <JobTitleLink />
-          <CountriesLink />
-          <LogoutLink />
-        </>
+        <Breadcrumb separator="-">
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/username">Username</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/jobtitle">Job Title</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/countries">Countries</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <LogoutLink />
+          </BreadcrumbItem>
+        </Breadcrumb>
       ) : (
         <LoginLink />
       )}
-    </ButtonGroup>
+    </Box>
   );
 };

@@ -40,12 +40,13 @@ export default function Countries() {
 
   if (status === "loading") {
     return (
-      <Center
-        bg={"linear-gradient(160deg,#0093E9 0%, #80D0C7 100%);"}
-        h="100vh"
-      >
-        <CircularProgress isIndeterminate color="green.300" />
-      </Center>
+      <>
+        {" "}
+        <Navbar isLoggedIn={!!status} />
+        <Center h="50vh">
+          <CircularProgress isIndeterminate color="green.300" />
+        </Center>
+      </>
     );
   }
 
