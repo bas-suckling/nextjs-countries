@@ -60,5 +60,8 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
+    redirect: async (params: { url: string; baseUrl: string }) => {
+      return Promise.resolve(params.url);
+    },
   },
 };
