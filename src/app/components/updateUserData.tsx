@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, FormControl, FormLabel, Input, Stack } from "@chakra-ui/react";
+import { Button, FormControl, Input, Stack } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 
@@ -9,7 +9,7 @@ export const UpdateUserData = (props: {
   displayName: string;
 }) => {
   const { data: session } = useSession();
-  const userId = session?.user?.id;
+  const userId = session?.user?.id as string;
   const { routeName, displayName } = props;
   let [loading, setLoading] = useState(false);
   let [formValues, setFormValues] = useState({

@@ -1,5 +1,3 @@
-import { Session } from "next-auth";
-
 export interface Country {
   name: string;
   capital: string;
