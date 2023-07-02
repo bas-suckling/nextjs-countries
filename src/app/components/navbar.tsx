@@ -7,15 +7,14 @@ import {
   BreadcrumbLink,
 } from "@chakra-ui/react";
 import { LoginLink, LogoutLink } from "./links";
+import { useSession } from "next-auth/react";
 
-interface NavbarProps {
-  isLoggedIn: boolean;
-}
+export const Navbar = () => {
+  const { data: session } = useSession();
 
-export const Navbar: React.FC<NavbarProps> = (props: NavbarProps) => {
   return (
     <Box p={4}>
-      {props.isLoggedIn ? (
+      {session ? (
         <Breadcrumb separator="-">
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Home</BreadcrumbLink>

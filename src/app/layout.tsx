@@ -1,7 +1,8 @@
 import { Providers } from "./providers";
 import { ApolloWrapper } from "./lib/apollo-wrapper";
+import { Navbar } from "./components/navbar";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -10,7 +11,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <ApolloWrapper>{children}</ApolloWrapper>
+          <ApolloWrapper>
+            <Navbar />
+            {children}
+          </ApolloWrapper>
         </Providers>
       </body>
     </html>
