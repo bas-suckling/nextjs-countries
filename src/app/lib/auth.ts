@@ -4,6 +4,7 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
+  debug: true,
   session: {
     strategy: "jwt",
   },
@@ -59,9 +60,6 @@ export const authOptions: NextAuthOptions = {
         };
       }
       return token;
-    },
-    redirect: async (params: { url: string; baseUrl: string }) => {
-      return Promise.resolve(params.url);
     },
   },
 };
