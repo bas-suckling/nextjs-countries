@@ -1,32 +1,21 @@
 "use client";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 import { signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
 export const LoginButton = () => {
   return (
-    <button style={{ marginRight: 10 }} onClick={() => signIn()}>
+    <Button style={{ marginRight: 10 }} onClick={() => signIn()}>
       Sign in
-    </button>
-  );
-};
-
-export const RegisterButton = () => {
-  return (
-    <Link href="/register" style={{ marginRight: 10 }}>
-      Register
-    </Link>
+    </Button>
   );
 };
 
 export const LogoutButton = () => {
   return (
-    <button style={{ marginRight: 10 }} onClick={() => signOut()}>
+    <Button style={{ marginRight: 10 }} onClick={() => signOut()}>
       Sign Out
-    </button>
+    </Button>
   );
-};
-
-export const ProfileButton = () => {
-  return <Link href="/profile">Profile</Link>;
 };
