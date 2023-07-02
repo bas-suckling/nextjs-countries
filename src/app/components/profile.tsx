@@ -1,17 +1,18 @@
 "use client";
 import { Box, Center, Heading, Stack } from "@chakra-ui/react";
-import { getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { UserInfo } from "../types";
 
 export const Profile = () => {
-  const [userInfo, setUserInfo] = useState(null);
-  const userId = "9828eb4a-b014-482f-8df1-60f9d45b35d6";
+  const { data: session } = useSession();
+  const [userInfo, setUserInfo] = useState<UserInfo>();
+  const userId = session?.user?.id;
 
   useEffect(() => {
     const getProfileData = async () => {
       const query = await fetch(`/api/user/${userId}`);
       const response = await query.json();
-      console.log(response);
       setUserInfo(response.user);
     };
     getProfileData();

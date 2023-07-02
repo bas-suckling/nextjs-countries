@@ -1,11 +1,15 @@
 "use client";
 
-import { Heading, Stack } from "@chakra-ui/react";
+import { Heading, Stack, Container } from "@chakra-ui/react";
+import { UpdateUserData } from "../components/updateUserData";
 
 export default function JobTitle() {
   return (
-    <Stack>
-      <Heading>Update your Job Title</Heading>
-    </Stack>
+    <Container maxW="md">
+      <Stack gap={4}>
+        <Heading>Update your Job Title</Heading>
+        <UpdateUserData displayName="Job Title" routeName="jobtitle" />
+      </Stack>
+    </Container>
   );
 }

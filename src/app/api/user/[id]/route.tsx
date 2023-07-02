@@ -20,17 +20,7 @@ export async function PATCH(
       );
     }
 
-    const { jobtitle, username } = await req.json();
-
-    const data: Data = {};
-
-    if (typeof jobtitle === "string") {
-      data.jobtitle = jobtitle;
-    }
-
-    if (typeof username === "string") {
-      data.username = username;
-    }
+    const data = await req.json();
 
     await prisma.user.update({
       where: { id },
