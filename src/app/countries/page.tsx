@@ -2,11 +2,17 @@
 
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { cache, use } from "react";
-
 import { gql } from "@apollo/client";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
-import { Box, Grid, GridItem, Heading, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  CircularProgress,
+  Grid,
+  GridItem,
+  Heading,
+  Stack,
+} from "@chakra-ui/react";
 import CountryCard from "../components/countryCard";
 import { Country } from "../types";
 
@@ -32,7 +38,14 @@ export default function Countries() {
   const { data }: any = useSuspenseQuery(query);
 
   if (status === "loading") {
-    return <p>Loading....</p>;
+    return (
+      <Center
+        bg={"linear-gradient(160deg,#0093E9 0%, #80D0C7 100%);"}
+        h="100vh"
+      >
+        <CircularProgress isIndeterminate color="green.300" />
+      </Center>
+    );
   }
 
   return (

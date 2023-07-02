@@ -1,10 +1,4 @@
-import {
-  LoginButton,
-  LogoutButton,
-  ProfileButton,
-  RegisterButton,
-} from "./components/buttons.component";
-import { User } from "./components/user.component";
+import { LoginButton, LogoutButton } from "./components/buttons.component";
 
 import { __DEV__ } from "@apollo/client/utilities/globals";
 import { getServerSession } from "next-auth";
@@ -21,16 +15,7 @@ export default async function Home() {
         height: "70vh",
       }}
     >
-      <div>
-        <LoginButton />
-        <RegisterButton />
-        <LogoutButton />
-        <ProfileButton />
-        <h1>Server Session</h1>
-        <pre>{JSON.stringify(session)}</pre>
-
-        <User />
-      </div>
+      <div>{session ? <LogoutButton /> : <LoginButton />}</div>
     </main>
   );
 }
